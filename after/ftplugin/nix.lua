@@ -1,3 +1,5 @@
+local lsp_utils = require("utils.lsp")
+
 vim.opt.shiftwidth = 2
 
 local root_files = { "flake.nix", ".git" }
@@ -7,7 +9,7 @@ local paths = vim.fs.find(root_files, {
   upward = true,
 })
 
-require("lsp-util").setup_lsp({
+lsp_utils.setup_lsp({
   cmd = { "nil" },
   filetypes = { "nix" },
   single_file_support = true,

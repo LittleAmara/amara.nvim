@@ -1,3 +1,5 @@
+local lsp_utils = require("utils.lsp")
+
 vim.opt.makeprg = "cargo build"
 
 local root_files = { "Cargo.toml", ".git" }
@@ -12,7 +14,7 @@ capabilities.experimental = {
   serverStatusNotification = true,
 }
 
-require("lsp-util").setup_lsp({
+lsp_utils.setup_lsp({
   cmd = { "rust-analyzer" },
   filetypes = { "rust" },
   root_dir = vim.fs.dirname(paths[1]),

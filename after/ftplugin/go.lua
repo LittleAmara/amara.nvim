@@ -1,3 +1,5 @@
+local lsp_utils = require("utils.lsp")
+
 local root_files = { "go.work", "go.mod", ".git" }
 
 local paths = vim.fs.find(root_files, {
@@ -5,7 +7,7 @@ local paths = vim.fs.find(root_files, {
   upward = true,
 })
 
-require("lsp-util").setup_lsp({
+lsp_utils.setup_lsp({
   name = "gopls",
   cmd = { "gopls" },
   root_dir = vim.fs.dirname(paths[1]),

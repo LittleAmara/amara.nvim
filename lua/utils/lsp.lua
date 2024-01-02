@@ -17,21 +17,9 @@ local _default_opts = {
 --- Setup a language server protocol in a non blocking way with |vim.schedule|
 ---@param opts table: See |vim.lsp.start_client|
 function M.setup_lsp(opts)
-  async.run(function()
-    local final_opts = vim.tbl_deep_extend("force", _default_opts, opts)
+  local final_opts = vim.tbl_deep_extend("force", _default_opts, opts)
 
-    local client_id = vim.lsp.start(final_opts or {})
-
-    if client_id == nil then
-      return
-    end
-
-    local client = vim.lsp.get_client_by_id(client_id)
-
-    if client == nil then
-      return
-    end
-  end)
+  vim.lsp.start(final_opts or {})
 end
 
 return M
