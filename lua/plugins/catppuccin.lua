@@ -9,18 +9,12 @@ return {
     vim.cmd.colorscheme("catppuccin")
   end,
   opts = {
-    flavour = "mocha", -- latte, frappe, macchiato, mocha
-    background = { -- h: background
+    flavour = "mocha",
+    background = {
       light = "latte",
       dark = "mocha",
     },
     transparent_background = true,
-    show_end_of_buffer = false, -- show the '~' characters after the end of buffers
-    term_colors = false,
-    styles = {
-      comments = { "italic" },
-      conditionals = { "italic" },
-    },
     custom_highlights = function(colors)
       return {
         Pmenu = { bg = "None" },
