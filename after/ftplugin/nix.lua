@@ -14,4 +14,15 @@ lsp_utils.setup_lsp({
   filetypes = { "nix" },
   single_file_support = true,
   root_dir = vim.fs.dirname(paths[1]),
+  settings = {
+    ["nil"] = {
+      formatting = { command = { "nixpkgs-fmt" } },
+      nix = {
+        flake = {
+          autoArchive = false, -- I don't need this until the autoEvalInputs in fixed
+          autoEvalInputs = false, -- Nil doesn't handle well some inputs for the moment
+        },
+      },
+    },
+  },
 })
