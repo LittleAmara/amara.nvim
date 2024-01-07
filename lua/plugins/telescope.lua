@@ -69,7 +69,7 @@ return {
           hijack_netrw = false,
           hide_parent_dir = true,
           prompt_path = true,
-          -- git_status = false,
+          git_status = false,
         }),
       },
     },
