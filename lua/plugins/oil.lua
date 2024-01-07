@@ -1,10 +1,12 @@
 return {
   "stevearc/oil.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   lazy = false,
+  enabled = false, -- testing if telescope file browser if sufficient
   opts = {
     columns = {
       "icon",
-      "permissions",
+      { "permissions", highlight = "Exception" },
     },
     view_options = {
       show_hidden = true,
@@ -18,7 +20,6 @@ return {
       },
     },
   },
-  dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
     { "<leader>-", "<cmd>Oil --float<cr>", desc = "Open parent directory in a floating window" },
