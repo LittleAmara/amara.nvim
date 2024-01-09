@@ -10,6 +10,7 @@ local _custom_ivy = {
     results = { " " },
     preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
   },
+  previewer = false,
 }
 
 return {
@@ -66,10 +67,19 @@ return {
       },
       extensions = {
         file_browser = vim.tbl_deep_extend("force", _custom_ivy, {
-          hijack_netrw = false,
+          hijack_netrw = true,
           hide_parent_dir = true,
           prompt_path = true,
           git_status = false,
+          path = vim.fn.expand("%:p:h"),
+          cwd_to_path = true,
+          mappings = {
+            ["n"] = {
+              ["-"] = function(prompt_bufnr)
+                return require("telescope._extensions.file_browser.actions").goto_parent_dir(prompt_bufnr, true)
+              end,
+            },
+          },
         }),
       },
     },
