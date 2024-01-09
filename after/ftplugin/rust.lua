@@ -15,6 +15,7 @@ capabilities.experimental = {
 }
 
 lsp_utils.setup_lsp({
+  name = "rust-analyzer",
   cmd = { "rust-analyzer" },
   filetypes = { "rust" },
   root_dir = vim.fs.dirname(paths[1]),
