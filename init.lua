@@ -34,6 +34,7 @@ require("keymaps")
 
 vim.schedule(function()
   vim.diagnostic.config({
+    float = { border = "rounded" },
     signs = {
       text = {
         [vim.diagnostic.severity.ERROR] = "✘",
