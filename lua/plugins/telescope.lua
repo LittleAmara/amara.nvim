@@ -71,8 +71,7 @@ return {
           hide_parent_dir = true,
           prompt_path = true,
           git_status = false,
-          path = vim.fn.expand("%:p:h"),
-          cwd_to_path = true,
+          path = "%:p:h",
           mappings = {
             ["n"] = {
               ["-"] = function(prompt_bufnr)
