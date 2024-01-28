@@ -78,6 +78,7 @@ return {
           prompt_path = true,
           git_status = false,
           path = "%:p:h",
+          dir_icon = " ",
           mappings = {
             ["n"] = {
               ["-"] = function(prompt_bufnr)
