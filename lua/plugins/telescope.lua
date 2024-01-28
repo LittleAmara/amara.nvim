@@ -34,6 +34,12 @@ return {
     opts = {
       defaults = {
         mappings = {
+          n = {
+            ["w"] = false,
+            ["q"] = function(prompt_bufnr)
+              return require("telescope.actions").close(prompt_bufnr)
+            end,
+          },
           i = {
             ["<C-u>"] = false,
           },
