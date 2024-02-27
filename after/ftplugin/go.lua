@@ -12,6 +12,7 @@ lsp_utils.setup_lsp({
   name = "gopls",
   cmd = { "gopls" },
   root_dir = vim.fs.dirname(paths[1]),
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
   single_file_support = true,
   settings = {
     gopls = {
