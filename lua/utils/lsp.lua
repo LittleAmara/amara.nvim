@@ -1,5 +1,18 @@
 local M = {}
 
+-- Setup the diagnostic globally
+vim.diagnostic.config({
+  float = { border = "rounded" },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "✘",
+      [vim.diagnostic.severity.WARN] = "▲",
+      [vim.diagnostic.severity.HINT] = "⚑",
+      [vim.diagnostic.severity.INFO] = "»",
+    },
+  },
+})
+
 local _default_opts = {
   on_attach = function(client, _)
     local bufopts = { noremap = true, silent = true, buffer = vim.api.nvim_get_current_buf() }
