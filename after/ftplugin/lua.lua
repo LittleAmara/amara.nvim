@@ -17,6 +17,10 @@ lsp_utils.setup_lsp({
   root_dir = vim.fs.dirname(paths[1]),
   settings = {
     Lua = {
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
       format = {
         enable = true,
         defaultConfig = {
