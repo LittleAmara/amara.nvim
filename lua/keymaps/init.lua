@@ -7,8 +7,9 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Map jk to go back to normal mode
+-- Map jk/kj to go back to normal mode
 map("i", "jk", "<Esc>", { silent = true })
+map("i", "kj", "<Esc>", { silent = true })
 
 -- Map double leader to remove search highlighting
 map("n", "<leader><leader>", "<cmd>noh<cr>", { silent = true })
@@ -18,6 +19,8 @@ map("n", "<leader><leader>", "<cmd>noh<cr>", { silent = true })
 map("i", "{<CR>", "{<CR>}<UP><END><CR>")
 
 map("n", "<leader>l", "<cmd>Lazy<cr>", { silent = true })
+map("n", "<tab>", "<cmd>tabnext<cr>", { silent = true })
+map("n", "<s-tab>", "<cmd>tabprevious<cr>", { silent = true })
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
