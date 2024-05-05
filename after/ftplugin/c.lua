@@ -1,7 +1,5 @@
 local lsp_utils = require("utils.lsp")
 
-vim.opt.comments = [[s:/*,mb:**,ex:*/,://,:///",]]
-
 local root_files = {
   "compile_commands.json",
   ".clang-format",
