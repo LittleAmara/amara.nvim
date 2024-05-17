@@ -16,12 +16,13 @@ set.incsearch = true
 
 -- space help
 set.list = true
-set.listchars = { tab = ">-", trail = "." }
+set.listchars = { tab = ">.", trail = "." }
 
 -- tab help
 set.expandtab = true
 set.smarttab = true
 set.shiftwidth = 4
+set.tabstop = 4
 
 -- The number of spaces inserted when you press tab.
 -- -1 means the same value as shiftwidth

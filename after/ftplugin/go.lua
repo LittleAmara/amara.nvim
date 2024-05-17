@@ -1,3 +1,5 @@
+vim.opt.expandtab = false
+
 local lsp_utils = require("utils.lsp")
 
 local root_files = { "go.work", "go.mod", ".git" }
