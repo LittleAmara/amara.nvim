@@ -1,34 +1,27 @@
--- Wrapper for mapping custom keybindings
-local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local default_ops = { noremap = true, silent = true }
 
--- Map jk/kj to go back to normal mode
-map("i", "jk", "<Esc>", { silent = true })
+-- Clipboard shortcut
+vim.keymap.set("v", "<leader>y", '"+y', default_ops)
 
--- Map double leader to remove search highlighting
-map("n", "<leader><leader>", "<cmd>noh<cr>", { silent = true })
+-- vim.keymap.set jk/kj to go back to normal mode
+vim.keymap.set("i", "jk", "<Esc>", default_ops)
+
+-- vim.keymap.set double leader to remove search highlighting
+vim.keymap.set("n", "<leader><leader>", "<cmd>noh<cr>", default_ops)
 
 -- Pepega braces
--- map('i', '{<CR>', '<ESC>o{<CR>}<UP><CR>')
-map("i", "{<CR>", "{<CR>}<UP><END><CR>")
-
-map("n", "<leader>l", "<cmd>Lazy<cr>", { silent = true })
+-- vim.keymap.set('i', '{<CR>', '<ESC>o{<CR>}<UP><CR>')
+vim.keymap.set("i", "{<CR>", "{<CR>}<UP><END><CR>")
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, default_ops)
+vim.keymap.set("n", "[d", vim.diagnostic.get_prev, default_ops)
+vim.keymap.set("n", "]d", vim.diagnostic.get_next, default_ops)
+vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, default_ops)
 
 -- Testing surrounding
-vim.keymap.set("v", '<leader>"', [[c"<c-r>""<esc>]], { noremap = false })
-vim.keymap.set("v", "<leader>'", [[c'<c-r>"'<esc>]], { noremap = false })
+vim.keymap.set("v", '<leader>"', [[c"<c-r>""<esc>]], default_ops)
+vim.keymap.set("v", "<leader>'", [[c'<c-r>"'<esc>]], default_ops)
 
 -- Lsp
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -46,3 +39,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   end,
 })
+
+-- Misc
+vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { silent = true })
