@@ -104,9 +104,16 @@ vim.api.nvim_create_autocmd({ "VimResume" }, {
 })
 
 vim.filetype.add({
-  extension = {
-    templ = "templ",
+  {
+    extension = {
+      templ = "templ"
+    }
   },
+  {
+    pattern = {
+      [".*%.blade%.php"] = "blade",
+    }
+  }
 })
 
 -- Pretty printing for debug
