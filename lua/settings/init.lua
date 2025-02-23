@@ -4,6 +4,10 @@ local set = vim.opt
 
 set.termguicolors = true
 
+-- Must disable it because of wezterm multiplexer
+-- see https://github.com/wezterm/wezterm/issues/4607
+set.termsync = false
+
 -- mouse
 set.mouse = ""
 
@@ -12,7 +16,6 @@ set.ignorecase = true
 set.smartcase = true
 set.hlsearch = true
 set.incsearch = true
--- set noswapfile
 
 -- space help
 set.list = true
