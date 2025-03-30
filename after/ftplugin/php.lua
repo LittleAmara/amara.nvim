@@ -12,8 +12,10 @@ lsp_utils.setup_lsp({
   name = "php lsp",
   cmd = { "phpactor", "language-server" },
   root_dir = vim.fs.dirname(paths[1]),
-  filetypes = { "php", "blade" },
+  filetypes = { "php" },
   init_options = {
     ['language_server_php_cs_fixer.enabled'] = true,
+    ['language_server_phpstan.enabled'] = true,
+    ['language_server_psalm.enabled'] = true,
   },
 })
