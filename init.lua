@@ -1,3 +1,8 @@
+if not vim.fn.has("nvim-0.11") then
+  vim.notify("Neovim version must be >= 0.11 for this configuration to work properly", vim.log.levels.ERROR)
+  return
+end
+
 -- Setup lazy if not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
