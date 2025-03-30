@@ -88,6 +88,21 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
 
+-- Setup the diagnostic globally
+vim.diagnostic.config({
+  float = { border = "rounded" },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "✘",
+      [vim.diagnostic.severity.WARN] = "▲",
+      [vim.diagnostic.severity.HINT] = "⚑",
+      [vim.diagnostic.severity.INFO] = "»",
+    },
+  },
+})
+
+vim.o.winborder = "rounded"
+
 -- Apply automatically formatter
 
 -- vim.api.nvim_create_autocmd({ "BufWritePost" }, {

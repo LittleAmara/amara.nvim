@@ -17,13 +17,12 @@ return {
     transparent_background = true,
     custom_highlights = function(colors)
       return {
-        Pmenu = { bg = "None" },
-        PmenuSel = { bg = "None" },
-        NormalFloat = { bg = "None" },
+        Pmenu = { fg = "#9399b3", bg = "None" },
+        NormalFloat = { link = "Pmenu" },
         Number = { fg = colors.flamingo },
         Boolean = { fg = colors.flamingo },
         Constant = { fg = colors.sapphire },
-        FloatBorder = { fg = colors.maroon },
+        -- BlinkCmpMenuBorder = { link = "FloatBorder" },
       }
     end,
     integrations = {
