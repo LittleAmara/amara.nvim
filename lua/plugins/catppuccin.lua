@@ -19,10 +19,10 @@ return {
       return {
         Pmenu = { fg = "#9399b3", bg = "None" },
         NormalFloat = { link = "Pmenu" },
+        BlinkCmpMenuBorder = { link = "FloatBorder" },
         Number = { fg = colors.flamingo },
         Boolean = { fg = colors.flamingo },
         Constant = { fg = colors.sapphire },
-        -- BlinkCmpMenuBorder = { link = "FloatBorder" },
       }
     end,
     integrations = {
@@ -32,7 +32,6 @@ return {
       telescope = true,
       treesitter = true,
       noice = true,
-      flash = true,
     },
   },
 }

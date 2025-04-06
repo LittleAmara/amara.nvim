@@ -1,6 +1,8 @@
+-- Exit if neovim version is under 0.11
 if not vim.fn.has("nvim-0.11") then
   vim.notify("Neovim version must be >= 0.11 for this configuration to work properly", vim.log.levels.ERROR)
-  return
+  vim.fn.getchar()
+  os.exit(1)
 end
 
 -- Setup lazy if not installed
@@ -31,47 +33,12 @@ require("lazy").setup("plugins", {
   change_detection = {
     enabled = false,
   },
-
   defaults = {
     lazy = true,
   },
+  rocks = {
+    enabled = false,
+  }
 })
 
 require("keymaps")
-
-local capabilities = {
-  textDocument = {
-    foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true,
-    },
-  },
-}
-
-capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
-
-vim.lsp.config("*", {
-  capabilities = capabilities,
-  root_markers = { ".git" },
-})
-
-vim.lsp.config.luals = {
-  cmd = { "lua-language-server" },
-  filetypes = { "lua" },
-  root_markers = { ".git" },
-  settings = {
-    Lua = {
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      format = {
-        enable = true,
-        defaultConfig = {
-          indent_style = "space",
-          indent_size = "2",
-        },
-      },
-    },
-  },
-}
