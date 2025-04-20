@@ -22,3 +22,10 @@ vim.keymap.set("v", "<leader>'", [[c'<c-r>"'<esc>]], default_ops)
 
 -- Misc
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { silent = true })
+
+-- Vscode specific keybinds
+if vim.g.vscode then
+  vim.keymap.set("n", "<leader>f", "<cmd>lua require('vscode').action('workbench.action.quickOpen')<cr>", { silent = true })
+  vim.keymap.set("n", "<leader><space>", "<cmd>lua require('vscode').action('workbench.action.showCommands')<cr>", { silent = true })
+  vim.keymap.set("n", "<leader>r", "<cmd>lua require('vscode').action('vscode-neovim.restart')<cr>", { silent = true })
+end

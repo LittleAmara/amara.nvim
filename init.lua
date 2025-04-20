@@ -23,6 +23,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("settings")
+require("keymaps")
+
+-- Do not load plugins if in vscode
+if vim.g.vscode then
+  return
+end
+
 require("lazy").setup("plugins", {
   ui = {
     border = "rounded",
@@ -41,4 +48,3 @@ require("lazy").setup("plugins", {
   }
 })
 
-require("keymaps")
