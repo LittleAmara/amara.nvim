@@ -15,13 +15,12 @@ vim.diagnostic.config({
 
 -- Servers settings
 vim.lsp.config("*", {
-  root_markers = { ".git" },
+  root_markers = { ".git", ".env" },
 })
 
 vim.lsp.config.luals = {
   cmd = { "lua-language-server" },
   filetypes = { "lua" },
-  root_markers = { ".git" },
   settings = {
     Lua = {
       workspace = {
@@ -90,6 +89,7 @@ vim.lsp.config.nills = {
   },
 }
 
+-- Disabled
 vim.lsp.config.phpactor = {
   cmd = { "phpactor", "language-server" },
   root_markers = { "composer.json", ".phpactor.json", ".phpactor.yml", ".phpactor.yaml" },
@@ -99,6 +99,12 @@ vim.lsp.config.phpactor = {
     ['language_server_phpstan.enabled'] = true,
     ['language_server_psalm.enabled'] = true,
   },
+}
+
+vim.lsp.config.intelephense = {
+  cmd = { "intelephense", "--stdio" },
+  root_markers = { "composer.json", ".phpactor.json", ".phpactor.yml", ".phpactor.yaml" },
+  filetypes = { "php" },
 }
 
 vim.lsp.config.pylsp = {
@@ -123,4 +129,4 @@ vim.lsp.config.rust_analyzer = {
   root_markers = { "Cargo.toml" },
 }
 
-vim.lsp.enable({ "luals", "clangd", "gopls", "templ_lsp", "phpactor", "pylsp", "rust_analyzer" })
+vim.lsp.enable({ "luals", "clangd", "gopls", "templ_lsp", "intelephense", "pylsp", "rust_analyzer" })
