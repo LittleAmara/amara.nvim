@@ -19,6 +19,9 @@ return {
       return {
         Pmenu = { fg = "#9399b3", bg = "None" },
         NormalFloat = { link = "Pmenu" },
+        FloatBorder = { bg = "None" },
+        TelescopeBorder = { link = "FloatBorder" },
+        TelescopeTitle = { bg = "None" },
         BlinkCmpMenuBorder = { link = "FloatBorder" },
         Number = { fg = colors.flamingo },
         Boolean = { fg = colors.flamingo },
