@@ -76,6 +76,7 @@ return {
           hide_parent_dir = true,
           prompt_path = true,
           git_status = false,
+          respect_gitignore = false,
           path = "%:p:h",
           dir_icon = " ",
           mappings = {
