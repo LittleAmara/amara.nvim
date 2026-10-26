@@ -1,7 +1,8 @@
 vim.filetype.add({
   extension = {
     templ = "templ",
-    mdx   = "markdown"
+    mdx   = "markdown",
+    njk= "html"
     -- yml = "yaml.ansible"
   },
   pattern = {

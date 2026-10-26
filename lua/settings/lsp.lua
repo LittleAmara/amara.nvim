@@ -104,7 +104,16 @@ vim.lsp.config.phpactor = {
 vim.lsp.config.intelephense = {
   cmd = { "intelephense", "--stdio" },
   root_markers = { "composer.json", ".phpactor.json", ".phpactor.yml", ".phpactor.yaml" },
-  filetypes = { "php" },
+  filetypes = { "php", "blade" },
+  settings = {
+    intelephense = {
+      files = {
+        associations = {
+          '*.php', '*.blade.php'
+        }
+      }
+    }
+  },
 }
 
 vim.lsp.config.pylsp = {
@@ -129,4 +138,58 @@ vim.lsp.config.rust_analyzer = {
   root_markers = { "Cargo.toml" },
 }
 
-vim.lsp.enable({ "luals", "clangd", "gopls", "templ_lsp", "intelephense", "pylsp", "rust_analyzer" })
+vim.lsp.config.emmet = {
+  cmd = { "emmet-language-server", "--stdio" },
+  filetypes = { "html", "blade", "php" },
+}
+
+vim.lsp.config.svelte = {
+  cmd = { "svelteserver", "--stdio" },
+  root_markers = { "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" },
+  filetypes = { "svelte" },
+}
+
+vim.lsp.config.tofu_ls = {
+  cmd = { "tofu-ls", "serve" },
+  filetypes = { "terraform", "tf" }
+}
+
+vim.lsp.config.vts_ls = {
+  cmd = { "vtsls", "--stdio" },
+  filetypes = { "typescript", "javascript", "typescriptreact" },
+  root_markers = { "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" },
+}
+
+vim.lsp.config.ansible_ls = {
+  cmd = { 'ansible-language-server', '--stdio' },
+  settings = {
+    ansible = {
+      python = {
+        interpreterPath = 'python',
+      },
+      ansible = {
+        path = 'ansible',
+      },
+      executionEnvironment = {
+        enabled = false,
+      },
+      validation = {
+        enabled = true,
+        lint = {
+          enabled = true,
+          path = 'ansible-lint',
+        },
+      },
+    },
+  },
+  filetypes = { 'yaml' },
+  root_dir = function(bufnr, on_dir)
+    local root = vim.fs.root(bufnr, { 'ansible.cfg', '.ansible-lint' })
+    if root ~= nil then
+      on_dir(root)
+    end
+  end,
+}
+
+vim.lsp.enable({ "luals", "clangd", "gopls", "templ_lsp", "intelephense", "pylsp", "rust_analyzer", "emmet", "svelte",
+  "ts_ls", "vts_ls", "tofu_ls", "ansible_ls" })
