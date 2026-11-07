@@ -60,6 +60,18 @@ return {
           find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--exclude", ".git" },
           theme = "dropdown",
           previewer = false,
+          mappings = {
+            i = {
+              ["<C-s>"] = function(prompt_bufnr)
+                return require("telescope.actions").select_horizontal(prompt_bufnr)
+              end,
+            },
+            n = {
+              ["<C-s>"] = function(prompt_bufnr)
+                return require("telescope.actions").select_horizontal(prompt_bufnr)
+              end,
+            },
+          },
         },
         git_files = {
           theme = "dropdown",
@@ -80,9 +92,17 @@ return {
           path = "%:p:h",
           dir_icon = " ",
           mappings = {
+            ["i"] = {
+              ["<C-t>"] = function(prompt_bufnr)
+                return require("telescope.actions").select_tab(prompt_bufnr)
+              end,
+            },
             ["n"] = {
               ["-"] = function(prompt_bufnr)
                 return require("telescope._extensions.file_browser.actions").goto_parent_dir(prompt_bufnr, true)
+              end,
+              ["<C-t>"] = function(prompt_bufnr)
+                return require("telescope.actions").select_tab(prompt_bufnr)
               end,
             },
           },

@@ -7,10 +7,14 @@ return {
   event = { "BufReadPost", "BufNewFile", "CmdlineEnter" },
   init = function()
     vim.api.nvim_create_autocmd('FileType', {
-      callback = function()
+      callback = function(args)
       -- syntax highlighting, provided by Neovim
       pcall(vim.treesitter.start)
       -- indentation, provided by nvim-treesitter
+      -- gdscript: the builtin indent/gdscript.vim handles incomplete blocks far better
+      if vim.tbl_contains({ "gdscript" }, args.match) then
+        return
+      end
       vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
       end,
     })
