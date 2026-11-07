@@ -4,6 +4,32 @@ vim.api.nvim_create_autocmd({ "VimResume" }, {
   pattern = { "*" },
 })
 
+-- Godot: listen on a project-local pipe so the Godot editor can open files in this instance
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+  callback = function()
+    local root = vim.fs.root(vim.fn.getcwd(), "project.godot")
+    if root == nil then
+      return
+    end
+    vim.fn.mkdir(root .. "/.godot", "p")
+    local pipe = root .. "/.godot/nvim.pipe"
+    if pcall(vim.fn.serverstart, pipe) then
+      return
+    end
+    -- Pipe already exists: leave it if another instance owns it, otherwise it is stale
+    local ok, chan = pcall(vim.fn.sockconnect, "pipe", pipe, { rpc = true })
+    if ok and chan > 0 then
+      vim.fn.chanclose(chan)
+      return
+    end
+    os.remove(pipe)
+    -- Can still fail if the path exceeds the unix socket limit (~108 chars)
+    if not pcall(vim.fn.serverstart, pipe) then
+      vim.notify("Godot: failed to listen on " .. pipe, vim.log.levels.WARN)
+    end
+  end,
+})
+
 -- FIXME: to remove after Telescope integrates the new winborder option
 -- see https://github.com/nvim-telescope/telescope.nvim/issues/3436#issuecomment-2756267300
 vim.api.nvim_create_autocmd("User", {
