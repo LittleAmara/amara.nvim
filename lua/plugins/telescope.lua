@@ -57,7 +57,7 @@ return {
       },
       pickers = {
         find_files = {
-          find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--exclude", ".git" },
+          find_command = { "fd", "--type", "f", "--follow", "--strip-cwd-prefix", "--hidden", "--exclude", ".git" },
           theme = "dropdown",
           previewer = false,
           mappings = {
@@ -72,6 +72,9 @@ return {
               end,
             },
           },
+        },
+        live_grep = {
+          additional_args = { "--follow" },
         },
         git_files = {
           theme = "dropdown",
@@ -89,6 +92,7 @@ return {
           prompt_path = true,
           git_status = false,
           respect_gitignore = false,
+          follow_symlinks = true,
           path = "%:p:h",
           dir_icon = " ",
           mappings = {
