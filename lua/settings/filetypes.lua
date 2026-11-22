@@ -4,6 +4,7 @@ vim.filetype.add({
     mdx   = "markdown",
     njk= "html",
     godot = "gdresource",
+    gdshader = "gdshader",
     -- yml = "yaml.ansible"
   },
   pattern = {

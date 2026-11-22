@@ -168,13 +168,6 @@ vim.lsp.config.vts_ls = {
   root_markers = { "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" },
 }
 
--- Godot's built-in language server, only available while the editor is running
-vim.lsp.config.gdscript = {
-  cmd = vim.lsp.rpc.connect("127.0.0.1", tonumber(os.getenv("GDScript_Port") or "6005")),
-  filetypes = { "gdscript" },
-  root_markers = { "project.godot" },
-}
-
 vim.lsp.config.ansible_ls = {
   cmd = { 'ansible-language-server', '--stdio' },
   settings = {
@@ -207,4 +200,4 @@ vim.lsp.config.ansible_ls = {
 }
 
 vim.lsp.enable({ "luals", "clangd", "gopls", "templ_lsp", "intelephense", "pylsp", "rust_analyzer", "emmet", "svelte",
-  "ts_ls", "vts_ls", "tofu_ls", "ansible_ls", "gdscript" })
+  "ts_ls", "vts_ls", "tofu_ls", "ansible_ls" })
